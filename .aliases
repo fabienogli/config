@@ -1,6 +1,7 @@
 # Edit this file
 alias ealias="vim $HOME/.aliases"
 alias findAlias="alias | grep "
+# alias ualias='zsh; rsync .aliases /home/$USER/config/.aliases'
 
 # Open chrome specific profile
 alias gneibaf="/opt/google/chrome/chrome --user-dir=Default"	#Neibaf
@@ -10,9 +11,54 @@ alias lusb="ls -al /run/media/fabien/"
 
 # Docker
 alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
-alias runDocker='docker run -it'
+alias dil='docker image ls'
+alias dci='docker-compose images'
 alias up='docker-compose up'
 alias down='docker-compose down'
+alias startDocket='systemctl start docker'
+# Enter in interactive mode with docker
+rund () {
+	if [[ -z "$1" ]]; then
+    	echo "Interactive mode inside a docker container\nUsage: $0 container-id"
+		return 1
+	fi
+	docker run -it $1 /bin/bash
+}
+
+rundc () {
+	if [[ "$#" < 2 ]]; then
+    	echo "Run a command in a docker-compose service\nUsage: $0 service command"
+		return 1
+	fi
+	docker-compose run --rm $1 ${@:2}
+}
+
+
+ualias() {
+	source /home/$USER/.zshrc
+	rsync /home/$USER/.aliases /home/$USER/config/.aliases
+	if [[ "$#" < 1 ]]; then
+		return 0
+	fi
+	
+	if [[ "$1" != "c" ]]; then
+		echo "To commit aliases change: $0 c message"
+		return 1
+	fi
+
+	if [[ "$#" < 2 ]]; then
+		msg="update alias"
+	else
+		msg=${@:2}
+	fi
+
+	tmp=$PWD
+	cd /home/fabien/config/
+	git add .aliases
+	git commit -m $msg
+	git push
+	cd $tmp
+}
 
 # Encrypt usb drive
 alias encrypt="encfs /run/media/fabien/fabien_drive/.crypt /home/fabien/crypt_usb"
