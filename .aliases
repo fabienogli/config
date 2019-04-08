@@ -1,0 +1,52 @@
+# Edit this file
+alias ealias="vim $HOME/.aliases"
+alias findAlias="alias | grep "
+
+# Open chrome specific profile
+alias gneibaf="/opt/google/chrome/chrome --user-dir=Default"	#Neibaf
+
+# List usb drives 
+alias lusb="ls -al /run/media/fabien/"
+
+# Docker
+alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
+alias runDocker='docker run -it'
+alias up='docker-compose up'
+alias down='docker-compose down'
+
+# Encrypt usb drive
+alias encrypt="encfs /run/media/fabien/fabien_drive/.crypt /home/fabien/crypt_usb"
+alias dencrypt="fusermount -u /home/fabien/crypt_usb"
+
+# Encrypt mega files
+alias megencrypt="encfs /home/fabien/.mega /home/fabien/mega"
+alias megdecrypt="fusermount -u /home/fabien/mega"
+
+# dotnet
+alias dor="dotnet build && dotnet run"
+
+# Functions
+extract () {
+        for archive in $*; do
+                if [ -f $archive ] ; then
+                        case $archive in
+                                *.tar.bz2)   tar xvjf $archive    ;;
+                                *.tar.gz)    tar xvzf $archive    ;;
+                                *.bz2)       bunzip2 $archive     ;;
+                                *.rar)       rar x $archive       ;;
+                                *.gz)        gunzip $archive      ;;
+                                *.tar)       tar xvf $archive     ;;
+                                *.tbz2)      tar xvjf $archive    ;;
+                                *.tgz)       tar xvzf $archive    ;;
+                                *.zip)       unzip $archive       ;;
+                                *.Z)         uncompress $archive  ;;
+                                *.7z)        7z x $archive        ;;
+                                *)           echo "don't know how to extract '$archive'..." ;;
+                        esac
+                else
+                        echo "'$archive' is not a valid file!"
+                fi
+        done
+}
+
+
