@@ -11,4 +11,5 @@ echo "Docker group created !"
 
 # Add your user to the docker group
 usermod -aG docker $USER
-echo "User successfully added, setup is done"
+echo "User successfully added, setup is done\nYou need to log out to see the change"
+
