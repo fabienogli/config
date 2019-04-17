@@ -8,6 +8,9 @@ alias gneibaf="/opt/google/chrome/chrome --user-dir=Default"	#Neibaf
 # List usb drives 
 alias lusb="ls -al /run/media/$USER/"
 
+# Ssh
+alias rmssh='ssh-keygen -R'	# Remove ssh key for host
+
 # Docker
 alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
 alias dil='docker image ls'
