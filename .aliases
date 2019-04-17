@@ -1,5 +1,5 @@
 # Pacman
-alias update='alias | grep "alias update";sudo pacman -Syu'
+alias update='alias | grep "update";sudo pacman -Syu'
 
 # Edit this file
 alias ealias="vim $HOME/.aliases"
