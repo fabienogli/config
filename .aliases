@@ -21,11 +21,6 @@ alias clip="xclip -selection clipboard"
 alias wco="windscribe connect"
 alias wcd="windscribe disconnect"
 
-# go
-alias gr='go run'
-alias gb='go build'
-alias gi='go install'
-
 # docker
 alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
 alias dil='docker image ls'
