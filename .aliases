@@ -1,45 +1,58 @@
-# Pacman
+# pacman
 alias update='alias | grep "update=";sudo pacman -Syu'
 
-# Edit this file
+# edit this file
 alias ealias="vim $HOME/.aliases"
 alias findAlias="alias | grep "
 
-# Open chrome specific profile
+# open chrome specific profile
 alias gneibaf="/opt/google/chrome/chrome --user-dir=Default"	#Neibaf
 
-# List usb drives 
+# list usb drives 
 alias lusb="ls -al /run/media/$USER/"
 
-# Ssh
-alias rmssh='ssh-keygen -R'	# Remove ssh key for host
+# ssh
+alias rssh='ssh-keygen -R'	# Remove ssh key for host
 
-# Docker
+# copy to clipboard
+alias clip="xclip -selection clipboard"
+
+# windscribe
+alias wco="windscribe connect"
+alias wcd="windscribe disconnect"
+
+# go
+alias gr='go run'
+alias gb='go build'
+alias gi='go install'
+
+# docker
 alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
 alias dil='docker image ls'
 alias dci='docker-compose images'
 alias up='docker-compose up'
 alias down='docker-compose down'
 
-# Start service
+# start service
 alias start='systemctl start' 		# start a service
 alias stop='systemctl stop'	  		# stop a service
 alias enable='systemctl enable'		# enable a service to start on boot
 alias disable='systemctl disable'	# disable a service to start on boot
 alias restart='systemctl restart'	# restart a service
 
-# Encrypt usb drive
+# encrypt usb drive
 alias encrypt="encfs /run/media/fabien/fabien_drive/.crypt /home/fabien/crypt_usb"
 alias dencrypt="fusermount -u /home/fabien/crypt_usb"
 
-# Encrypt mega files
+# encrypt mega files
 alias megdecrypt="encfs /home/fabien/.mega /home/fabien/mega"
 alias megencrypt="fusermount -u /home/fabien/mega"
 
 # dotnet
 alias dor="dotnet build && dotnet run"
 
-# Functions
+## functions
+# extract data
 extract () {
         for archive in $*; do
                 if [ -f $archive ] ; then
@@ -64,7 +77,7 @@ extract () {
 }
 
 
-# Enter in interactive mode with docker
+# enter in interactive mode with docker
 rund () {
 	if [[ -z "$1" ]]; then
     	echo "Interactive mode inside a docker container\nUsage: $0 container-id"
@@ -72,7 +85,7 @@ rund () {
 	fi
 	docker run -it $1 /bin/bash
 }
-
+# run a command inside a service
 rundc () {
 	if [[ "$#" < 2 ]]; then
     	echo "Run a command in a docker-compose service\nUsage: $0 service command"
@@ -81,7 +94,7 @@ rundc () {
 	docker-compose run --rm $1 ${@:2}
 }
 
-# Update my alias
+# update my alias
 ualias() {
 	source /home/$USER/.zshrc
 	rsync /home/$USER/.aliases /home/$USER/config/.aliases
@@ -109,8 +122,10 @@ ualias() {
 }
 
 # if tmp alias import them
-if [ -f ~/.aliases_tmp ]; then
-	source ~/.aliases_tmp 
+if [ -f ~/.tmp.aliases ]; then
+	source ~/.tmp.aliases 
 fi
 
-
+if [ -f $STARTER/.starter.aliases ]; then
+	source $STARTER/.starter.aliases
+fi
