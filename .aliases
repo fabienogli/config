@@ -5,9 +5,6 @@ alias update='alias | grep "update=";sudo pacman -Syu'
 alias ealias="vim $HOME/.aliases"
 alias findAlias="alias | grep "
 
-# open chrome specific profile
-alias gneibaf="/opt/google/chrome/chrome --user-dir=Default"	#Neibaf
-
 # list usb drives 
 alias lusb="ls -al /run/media/$USER/"
 
@@ -36,12 +33,12 @@ alias disable='systemctl disable'	# disable a service to start on boot
 alias restart='systemctl restart'	# restart a service
 
 # encrypt usb drive
-alias encrypt="encfs /run/media/fabien/fabien_drive/.crypt /home/fabien/crypt_usb"
-alias dencrypt="fusermount -u /home/fabien/crypt_usb"
+alias encrypt="encfs /run/media/$USER/$USER_drive/.crypt $HOME/crypt_usb"
+alias dencrypt="fusermount -u $HOME/crypt_usb"
 
 # encrypt mega files
-alias megdecrypt="encfs /home/fabien/.mega /home/fabien/mega"
-alias megencrypt="fusermount -u /home/fabien/mega"
+alias megdecrypt="encfs $HOME/.mega $HOME/mega"
+alias megencrypt="fusermount -u $HOME/mega"
 
 # dotnet
 alias dor="dotnet build && dotnet run"
@@ -91,8 +88,8 @@ rundc () {
 
 # update my alias
 ualias() {
-	source /home/$USER/.zshrc
-	rsync /home/$USER/.aliases /home/$USER/config/.aliases
+	source $HOME/.zshrc
+	rsync $HOME/.aliases $HOME/config/.aliases
 	if [[ "$#" < 1 ]]; then
 		return 0
 	fi
@@ -109,7 +106,7 @@ ualias() {
 	fi
 
 	tmp=$PWD
-	cd /home/fabien/config/
+	cd $HOME/config/
 	git add .aliases
 	git commit -m $msg
 	git push
