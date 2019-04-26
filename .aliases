@@ -92,7 +92,7 @@ rundc () {
 # update my alias
 ualias() {
 	source $HOME/.zshrc
-	rsync $CONFIG/.aliases $HOME/config/.aliases
+	rsync $HOME/.gitconfig $CONFIG/.gitconfig
 	if [[ "$#" < 1 ]]; then
 		return 0
 	fi
