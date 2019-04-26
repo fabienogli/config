@@ -1,2 +1,3 @@
-# Config
-Personal config - A folder that contains alias and scripts
+# Custom Configuration for bash files and scripts  
+This file need to be imported in .zhrc or .bashrc
+And this script display an ascii picture

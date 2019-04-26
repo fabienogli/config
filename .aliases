@@ -2,7 +2,7 @@
 alias update='alias | grep "update=";sudo pacman -Syu'
 
 # edit this file
-alias ealias="vim $HOME/.aliases"
+alias ealias="vim $CONFIG/.aliases"
 alias findAlias="alias | grep "
 
 # list usb drives 
@@ -24,6 +24,9 @@ alias dil='docker image ls'
 alias dci='docker-compose images'
 alias up='docker-compose up'
 alias down='docker-compose down'
+
+# go
+alias gwd='$GOPATH/src/github.com/$GIT'
 
 # start service
 alias start='systemctl start' 		# start a service
@@ -89,7 +92,7 @@ rundc () {
 # update my alias
 ualias() {
 	source $HOME/.zshrc
-	rsync $HOME/.aliases $HOME/config/.aliases
+	rsync $CONFIG/.aliases $HOME/config/.aliases
 	if [[ "$#" < 1 ]]; then
 		return 0
 	fi
@@ -114,8 +117,8 @@ ualias() {
 }
 
 # if tmp alias import them
-if [ -f ~/.tmp.aliases ]; then
-	source ~/.tmp.aliases 
+if [ -f $CONFIG/.tmp.aliases ]; then
+	source $CONFIG/.tmp.aliases 
 fi
 
 if [ -f $STARTER/.starter.aliases ]; then
