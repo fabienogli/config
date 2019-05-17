@@ -15,8 +15,9 @@ alias rssh='ssh-keygen -R'	# Remove ssh key for host
 alias clip="xclip -selection clipboard"
 
 # windscribe
-alias wco="windscribe connect"
-alias wcd="windscribe disconnect"
+alias windru='systemctl start windscribe;windscribe connect'
+alias windco='windscribe connect'
+alias winddi='windscribe disconnect'
 
 # docker
 alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
@@ -26,7 +27,8 @@ alias up='docker-compose up'
 alias down='docker-compose down'
 
 # go
-alias gwd='$GOPATH/src/github.com/$GIT'
+alias gowd='$GOPATH/src/github.com/$GIT'
+alias gott='go test -v ./...'
 
 # start service
 alias start='systemctl start' 		# start a service
@@ -36,17 +38,24 @@ alias disable='systemctl disable'	# disable a service to start on boot
 alias restart='systemctl restart'	# restart a service
 
 # encrypt usb drive
-alias encrypt="encfs /run/media/$USER/$USER_drive/.crypt $HOME/crypt_usb"
-alias dencrypt="fusermount -u $HOME/crypt_usb"
-
-# encrypt mega files
-alias megdecrypt="encfs $HOME/.mega $HOME/mega"
-alias megencrypt="fusermount -u $HOME/mega"
+alias usbdecrypt="encfs /run/media/$USER/${USER}_drive/.crypt $HOME/crypt_usb"
+alias usbencrypt="fusermount -u $HOME/crypt_usb"
 
 # dotnet
 alias dor="dotnet build && dotnet run"
 
 ## functions
+
+# Function to open a file
+
+open () {
+	if [[ -z "$1" ]]; then
+    	echo "Open a file\nUsage: $0 file"
+		return 1
+	fi
+	xdg-open $1 2> /dev/null
+}
+
 # extract data
 extract () {
         for archive in $*; do
@@ -117,10 +126,12 @@ ualias() {
 }
 
 # if tmp alias import them
+
 if [ -f $CONFIG/.tmp.aliases ]; then
 	source $CONFIG/.tmp.aliases 
 fi
 
-if [ -f $STARTER/.starter.aliases ]; then
-	source $STARTER/.starter.aliases
+if [ -f $STARTER/.comp.bash ]; then
+	source $STARTER/.comp.bash
 fi
+
