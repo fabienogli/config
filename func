@@ -1,53 +1,4 @@
-# pacman
-alias update='alias | grep "update=";sudo pacman -Syu'
-
-# edit this file
-alias ealias="vim $CONFIG/.aliases"
-alias findAlias="alias | grep "
-
-# list usb drives 
-alias lusb="ls -al /run/media/$USER/"
-
-# ssh
-alias rssh='ssh-keygen -R'	# Remove ssh key for host
-
-# copy to clipboard
-alias clip="xclip -selection clipboard"
-
-# windscribe
-alias windru='systemctl start windscribe;windscribe connect'
-alias windco='windscribe connect'
-alias winddi='windscribe disconnect'
-
-# docker
-alias cleanDocker='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
-alias dil='docker image ls'
-alias dci='docker-compose images'
-alias up='docker-compose up'
-alias down='docker-compose down'
-
-# go
-alias gowd='$GOPATH/src/github.com/$GIT'
-alias gott='go test -v ./...'
-
-# start service
-alias start='systemctl start' 		# start a service
-alias stop='systemctl stop'	  		# stop a service
-alias enable='systemctl enable'		# enable a service to start on boot
-alias disable='systemctl disable'	# disable a service to start on boot
-alias restart='systemctl restart'	# restart a service
-
-# encrypt usb drive
-alias usbdecrypt="encfs /run/media/$USER/${USER}_drive/.crypt $HOME/crypt_usb"
-alias usbencrypt="fusermount -u $HOME/crypt_usb"
-
-# dotnet
-alias dor="dotnet build && dotnet run"
-
-## functions
-
 # Function to open a file
-
 open () {
 	if [[ -z "$1" ]]; then
     	echo "Open a file\nUsage: $0 file"
@@ -82,7 +33,7 @@ extract () {
 
 
 # enter in interactive mode with docker
-rund () {
+drun () {
 	if [[ -z "$1" ]]; then
     	echo "Interactive mode inside a docker container\nUsage: $0 container-id"
 		return 1
@@ -90,13 +41,24 @@ rund () {
 	docker run -it $1 /bin/bash
 }
 # run a command inside a service
-rundc () {
+dcexec () {
 	if [[ "$#" < 2 ]]; then
     	echo "Run a command in a docker-compose service\nUsage: $0 service command"
 		return 1
 	fi
 	docker-compose run --rm $1 ${@:2}
 }
+
+# watch file and restart them
+dcwatch () {
+	if [[ "$#" < 2 ]]; then
+    	echo "Watch ext file and reload docker service\nUsage: $0 service watched_files_extension"
+		return 1
+	fi
+	watchexec --restart --exts $2 --watch . "docker-compose restart $1"
+}
+
+
 
 # update my alias
 ualias() {
@@ -118,20 +80,13 @@ ualias() {
 	fi
 
 	tmp=$PWD
-	cd $HOME/config/
-	git add .aliases
+	cd $CONFIG/
+	git add .
 	git commit -m $msg
 	git push
 	cd $tmp
 }
 
-# if tmp alias import them
 
-if [ -f $CONFIG/.tmp.aliases ]; then
-	source $CONFIG/.tmp.aliases 
-fi
-
-if [ -f $STARTER/.comp.bash ]; then
-	source $STARTER/.comp.bash
-fi
-
+# edit this file
+alias efunction="vim $CONFIG/func"

@@ -1,0 +1,8 @@
+# edit this file
+alias etalias='vim $CONFIG/tmp_aliases'
+
+export PROTOSTAR="192.168.56.102"
+export ART_DIR="$HOME/hack/art_of_exploitation"
+source $ART_DIR/.aliases
+
+alias protostar='ssh user@$PROTOSTAR'
