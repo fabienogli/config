@@ -33,21 +33,32 @@ extract () {
 
 
 # enter in interactive mode with docker
-drun () {
+dsh () {
 	if [[ -z "$1" ]]; then
-    	echo "Interactive mode inside a docker container\nUsage: $0 container-id"
+    	echo "Shell inside a docker container\nUsage: $0 container-id"
 		return 1
 	fi
 	docker run -it $1 /bin/bash
 }
-# run a command inside a service
+
+# enter in interactive mode with docker
+dcsh () {
+	if [[ -z "$1" ]]; then
+    	echo "Go shell into a docker-compose service\nUsage: $0 service"
+		return 1
+	fi
+	docker-compose run $1 sh
+}
+
+# execute a command inside a service
 dcexec () {
 	if [[ "$#" < 2 ]]; then
     	echo "Run a command in a docker-compose service\nUsage: $0 service command"
 		return 1
 	fi
-	docker-compose run --rm $1 ${@:2}
+	docker-compose exec $1 ${@:2}
 }
+
 
 # watch file and restart them
 dcwatch () {

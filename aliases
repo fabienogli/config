@@ -3,7 +3,7 @@ alias update='alias | grep "update=";sudo pacman -Syu'
 
 # edit this file
 alias ealias="vim $CONFIG/aliases"
-alias findAlias="alias | grep "
+alias fa="alias | grep "
 
 # list usb drives 
 alias lusb="ls -al /run/media/$USER/"
@@ -20,14 +20,16 @@ alias windco='windscribe connect'
 alias winddi='windscribe disconnect'
 
 # docker
-alias dclean='docker rm $(docker ps -a -q) && docker rmi $(docker image ls -q)'
+alias dc='docker-compose'
+alias dclean='docker rm $(docker ps -a -q); docker rmi $(docker image ls -q)'
 alias dil='docker image ls'
 alias dci='docker-compose images'
 alias up='docker-compose up'
 alias down='docker-compose down'
 
 # go
-alias gowd='$GOPATH/src/github.com/$GIT'
+alias gogit='$GOPATH/src/github.com/$GIT'
+alias golab='$GOPATH/src/gitlab.com/$GIT'
 alias gott='go test -v ./...'
 
 # start service
@@ -43,3 +45,6 @@ alias usbencrypt="fusermount -u $HOME/crypt_usb"
 
 # dotnet
 alias dor="dotnet build && dotnet run"
+
+# libre office
+alias topdf="libreoffice --convert-to pdf"
