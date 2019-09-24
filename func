@@ -74,7 +74,7 @@ dcwatch () {
 # update my alias
 ualias() {
 	source $HOME/.zshrc
-	rsync $HOME/.gitconfig $CONFIG/.gitconfig
+
 	if [[ "$#" < 1 ]]; then
 		return 0
 	fi
@@ -92,12 +92,37 @@ ualias() {
 
 	tmp=$PWD
 	cd $CONFIG/
-	git add .
+	git add func aliases tmp_aliases
 	git commit -m $msg
 	git push
 	cd $tmp
 }
 
+#update config
+uconfig() {
+        cp $HOME/{.gdbinit,.vimrc,.gitconfig} $CONFIG/
+	if [[ "$#" < 1 ]]; then
+		return 0
+	fi
+	
+	if [[ "$1" != "c" ]]; then
+		echo "To commit config change: $0 c message"
+		return 1
+	fi
+
+	if [[ "$#" < 2 ]]; then
+		msg="update config"
+	else
+		msg=${@:2}
+	fi
+
+	tmp=$PWD
+	cd $CONFIG/
+	git add .
+	git commit -m $msg
+	git push
+	cd $tmp
+}
 
 # edit this file
 alias efunction="vim $CONFIG/func"
