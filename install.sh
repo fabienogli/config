@@ -6,5 +6,6 @@ if [[ $credential == "Y" ]]; then
 fi
 cp .gdbinit $HOME/.
 cp .vimrc $HOME/.
-echo "# custom config file\nsource source_me.sh" >> $HOME/.zshrc
-source $HOME/.zsrhc
+echo "# custom config file" >> $HOME/.zshrc
+echo "export CONFIG=$HOME/config" >> $HOME/.zshrc
+echo "source \$CONFIG/source_me.sh" >> $HOME/.zshrc

@@ -7,7 +7,7 @@ export EDITOR='vim'
 # export git credential
 export GIT='fabienogli'
 # display picture
-cat $CONFIG/ascii_art/godfather.txt
+cat $CONFIG/ascii_art/main
 
 # import custom aliases
 source $CONFIG/aliases
@@ -15,4 +15,4 @@ source $CONFIG/tmp_aliases
 source $CONFIG/func
 
 # script that checks if folder exists and if so, export it to path 
-source utils/export_if_exists.sh
+source $CONFIG/utils/export_if_exists.sh
