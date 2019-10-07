@@ -27,6 +27,9 @@ alias dci='docker-compose images'
 alias up='docker-compose up'
 alias down='docker-compose down'
 
+# gitlab
+alias loci='gitlab-runner exec docker'
+
 # go
 alias gogit='$GOPATH/src/github.com/$GIT'
 alias golab='$GOPATH/src/gitlab.com/$GIT'

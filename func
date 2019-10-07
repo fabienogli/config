@@ -7,6 +7,15 @@ open () {
 	xdg-open $1 2> /dev/null
 }
 
+# Functions to look for a word in pdf
+lookf () {
+	if [[ -z "$1" ]]; then
+    	echo "Look for a word recursiverly\nUsage: $0 word"
+		return 1
+	fi
+	pdfgrep -rn $1 .
+}
+
 # extract data
 extract () {
         for archive in $*; do
