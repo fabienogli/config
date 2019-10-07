@@ -8,7 +8,7 @@
 	cmd = code --wait --diff $LOCAL $REMOTE
 
 [user]
-	name = fabienogli
-	email = fabien.ogli@etu.univ-lyon1.fr
+    name = fabienogli
+    email = fabien.ogli@gmail.com
 [core]
 	autocrlf = input
