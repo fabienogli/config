@@ -20,7 +20,8 @@ alias windco='windscribe connect'
 alias winddi='windscribe disconnect'
 
 # python
-alias senv="source ENV/bin/activate"
+alias crenv="python -m venv env && source env/bin/activate"
+alias senv="source env/bin/activate"
 
 # docker
 alias dc='docker-compose'
