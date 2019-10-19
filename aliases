@@ -19,6 +19,9 @@ alias windru='systemctl start windscribe;windscribe connect'
 alias windco='windscribe connect'
 alias winddi='windscribe disconnect'
 
+# python
+alias senv="source ENV/bin/activate"
+
 # docker
 alias dc='docker-compose'
 alias dclean='docker rm $(docker ps -a -q); docker rmi $(docker image ls -q)'
