@@ -55,3 +55,6 @@ alias dor="dotnet build && dotnet run"
 
 # libre office
 alias topdf="libreoffice --convert-to pdf"
+
+# specifi to deepin os
+alias redock="pkill dde-dock && dde-dock 2> /dev/null &"

@@ -6,3 +6,4 @@ export PROTOSTAR="192.168.56.102"
 #source $ART_DIR/.aliases
 
 alias protostar='ssh user@$PROTOSTAR'
+alias raspberry='ssh pi@raspberry'
