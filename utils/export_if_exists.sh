@@ -13,22 +13,8 @@ for env  in "${(@k)envs}"; do
     fi
 done
 
-# export for no env value with bin folder
-declare -a exports
-exports=(
-	$HOME/flutter
-	$GOPATH
-	$STARTER
-	)
-
-for path in "${exports}"; do
-	BIN="$path/bin"
-	if [ -d "$BIN" ]; then
-		PATH=$PATH:$BIN
-	fi
-done
-
-export PATH=$PATH
+# export PATH 
+export PATH=$PATH:$HOME/flutter/bin:$GOPATH/bin
 
 # source starter if it exists
 if [ ! -z "$STARTER" ]; then
