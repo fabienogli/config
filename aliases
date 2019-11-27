@@ -28,7 +28,8 @@ alias dc='docker-compose'
 alias dclean='docker rm $(docker ps -a -q); docker rmi $(docker image ls -q)'
 alias dil='docker image ls'
 alias dci='docker-compose images'
-alias up='docker-compose up'
+alias dlogs='docker-compose $@ logs -f'
+alias up='docker-compose up -d && docker-compose logs -f'
 alias down='docker-compose down'
 
 # gitlab

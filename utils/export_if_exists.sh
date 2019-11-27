@@ -14,7 +14,7 @@ for env  in "${(@k)envs}"; do
 done
 
 # export PATH 
-export PATH=$PATH:$HOME/flutter/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/flutter/bin:$GOPATH/bin:$HOME/.gem/ruby/2.6.0/bin
 
 # source starter if it exists
 if [ ! -z "$STARTER" ]; then

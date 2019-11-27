@@ -56,12 +56,12 @@ dcsh () {
     	echo "Go shell into a docker-compose service\nUsage: $0 service"
 		return 1
 	fi
-	docker-compose run $1 sh
+	docker-compose exec $1 sh
 }
 
 # execute a command inside a service
 dcexec () {
-	if [[ "$#" < 2 ]]; then
+	if [[ "$#" -lt 2 ]]; then
     	echo "Run a command in a docker-compose service\nUsage: $0 service command"
 		return 1
 	fi
