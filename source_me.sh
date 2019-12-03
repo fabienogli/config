@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#! /bin/sh
 export CONFIG=$HOME/config
 # edit this file
 alias config="vim $CONFIG/source_me.sh"
