@@ -11,7 +11,7 @@ cat $CONFIG/ascii_art/main
 
 # import custom aliases
 source $CONFIG/aliases
-if [ -d $CONFIG/tmp_aliases ]; then
+if [[ -e $CONFIG/tmp_aliases ]]; then
 	source $CONFIG/tmp_aliases
 fi
 source $CONFIG/func
