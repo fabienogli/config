@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/sh
 printf "Do you want to set your git credential ? (Y/n)\n"
 read -r credential
 if [[ $credential == "Y" ]]; then
