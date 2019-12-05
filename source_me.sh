@@ -11,7 +11,9 @@ cat $CONFIG/ascii_art/main
 
 # import custom aliases
 source $CONFIG/aliases
-source $CONFIG/tmp_aliases
+if [ -d $CONFIG/tmp_aliases ]; then
+	source $CONFIG/tmp_aliases
+fi
 source $CONFIG/func
 export PATH=$PATH:/usr/local/go/bin
 # script that checks if folder exists and if so, export it to path 
