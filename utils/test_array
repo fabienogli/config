@@ -1,0 +1,11 @@
+print_arr(key, e) {
+	printf "key: $key\telement: $e\n"
+}
+
+declare -A arr
+arr=(
+	foo		bar
+	john	doe
+)
+
+./zsh_array.sh $arr $print_arr

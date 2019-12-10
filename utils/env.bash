@@ -1,4 +1,4 @@
-#! /usr/bin/zsh
+#! /usr/bin/env bash
 declare -A envs
 envs=(
 	NODE $HOME/.npm 
@@ -6,7 +6,7 @@ envs=(
 	GOPATH $HOME/go
 	)
 	
-for env  in "${(@k)envs}"; do
+for env in "${!envs[@]}"; do
 	link="$envs[$env]"
     if [ -d "$link" ]; then
         export $env=$link
