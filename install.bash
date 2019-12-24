@@ -19,7 +19,6 @@ else
 	exit 1
 fi
 file=".${ext}rc"
-echo "$file"
 echo "# custom config file" >> $HOME/$file
 echo "export CONFIG=$HOME/config" >> $HOME/$file
-echo "source \$CONFIG/source_me.sh" >> $HOME/$file
+echo "source \$CONFIG/source_me.${ext}" >> $HOME/$file
