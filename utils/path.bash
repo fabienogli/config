@@ -1,5 +1,5 @@
 # /bin/env bash
-declare -A path_to_export
+declare -a path_to_export
 path_to_export=(
 	$HOME/flutter/bin 
 	$GOPATH/bin 

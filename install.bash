@@ -20,7 +20,7 @@ else
 fi
 file=".${ext}rc"
 # replacing extension in function for ualias
-sed -i "s/$HOME\/.zshrc/$HOME\/$file/" ./func
+sed -i "s|HOME\/.zshrc|HOME\/$file|" ./func
 # writing this
 echo "# custom config file" >> $HOME/$file
 echo "export CONFIG=$HOME/config" >> $HOME/$file
