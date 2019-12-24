@@ -1,4 +1,7 @@
-print_arr(key, e) {
+print_arr()
+{
+	$key=$1
+	$e=$2
 	printf "key: $key\telement: $e\n"
 }
 

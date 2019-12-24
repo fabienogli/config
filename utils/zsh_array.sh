@@ -12,6 +12,9 @@ func=$2
 	
 for element  in "${(@k)arr}"; do
 	associate_element="$arr[$element]"
-	$func($element,$associate_element)
+	echo $func
+	echo $element
+	echo $associate_element
+	$func "$element" "$associate_element"
 done
 
