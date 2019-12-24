@@ -11,11 +11,7 @@ cat $CONFIG/ascii_art/main
 
 # import custom aliases
 source $CONFIG/aliases
-<<<<<<< HEAD:source_me.sh
-if [[ -e $CONFIG/tmp_aliases ]]; then
-=======
 if [ -d $CONFIG/tmp_aliases ]; then
->>>>>>> develop:source_me.zsh
 	source $CONFIG/tmp_aliases
 fi
 source $CONFIG/func
