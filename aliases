@@ -22,7 +22,7 @@ alias senv="source env/bin/activate"
 
 # docker
 alias dc='docker-compose'
-alias dclean='docker rm $(docker ps -a -q); docker rmi $(docker image ls -q)'
+alias dclean='docker rm $(docker container ls -q); docker rmi $(docker image ls -q); docker volume rm $(docker volume ls -q)'
 alias dil='docker image ls'
 alias dci='docker-compose images'
 alias dlogs='docker-compose $@ logs -f'
