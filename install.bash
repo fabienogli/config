@@ -4,8 +4,7 @@ read -r credential
 if [[ $credential == "Y" ]]; then
     ./set_credential.sh
 fi
-cp .gdbinit $HOME/.
-cp .vimrc $HOME/.
+cp .gdbinit .vimrc .tmux.conf -t $HOME/.
 
 # exporting the right bash things 
 printf "Select the shell you're using\n1\tZSH\n2\tBASH\n"
